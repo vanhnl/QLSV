@@ -14,8 +14,6 @@ namespace QLSV
 {
     public partial class CreateAccountPage : Form
     {
-        public string ConnectionString = "Data Source=DESKTOP-A20UEMF;Initial Catalog=QLSV;Integrated Security=True";
-
         public CreateAccountPage()
         {
             InitializeComponent();
@@ -31,7 +29,7 @@ namespace QLSV
             DialogResult dialogResult = MessageBox.Show("Create this user?", "Create user", MessageBoxButtons.YesNo);
             if(dialogResult == DialogResult.Yes)
             {
-                using (SqlConnection Connection = new SqlConnection(ConnectionString))
+                using (SqlConnection Connection = new SqlConnection(ConnectionString.ConnectionStringPC))
                 {
                     string QueryTest = "Insert into QLSVUser (Username, Password, FullName, PhoneNumber, Email, Contact) VALUES (@username,@password,@fullname,@phonenumber,@email,@contact)";
 
@@ -103,6 +101,11 @@ namespace QLSV
             }
             else
                 PasswordTxt.UseSystemPasswordChar = true;
+        }
+
+        private void UsernameTxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

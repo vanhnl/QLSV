@@ -11,9 +11,17 @@ using System.Windows.Forms;
 
 namespace QLSV
 {
+
+    //This create a fast way to get the connection string
+    public class ConnectionString
+    {
+        //this is the pc database string, it's user for fast connection
+        public static string ConnectionStringPC = "Data Source=DESKTOP-A20UEMF;Initial Catalog=QLSV;Integrated Security=True";
+        public static string ConnectionStringLC = "";
+    }
+
     public partial class Login : Form
     {
-        public string ConnectionString = "Data Source=DESKTOP-A20UEMF;Initial Catalog=QLSV;Integrated Security=True";
 
         public Login()
         {
@@ -21,6 +29,7 @@ namespace QLSV
         }
         private void Login_Load(object sender, EventArgs e)
         {
+            //First of all, the program check if user has login before, it's will save the login information to a string and refill it when user open again
             if (Properties.Settings.Default.Username != string.Empty)
             {
                 Login_Username_txtBox.Text = Properties.Settings.Default.Username;
@@ -33,7 +42,9 @@ namespace QLSV
         {
             SetLoginInfo();
 
-            SqlConnection Connection = new SqlConnection(ConnectionString);
+            //FIrst all way connection to the SQL server
+            SqlConnection Connection = new SqlConnection(ConnectionString.ConnectionStringPC);
+            //The query string to pass as a command line in SQL
             string query = "Select * from QLSVUser where Username = '" + Login_Username_txtBox.Text.Trim() + "'and Password = '" + Login_Password_txtBox.Text.Trim() + "'";
             Connection.Open();
             if (Connection.State == System.Data.ConnectionState.Open)
@@ -56,6 +67,7 @@ namespace QLSV
 
         private void ShowPassword_CheckedChanged(object sender, EventArgs e)
         {
+            //Enable password char or not base on the checked box
             if(ShowPassword.Checked)
             {
                 Login_Password_txtBox.UseSystemPasswordChar = false;
@@ -75,6 +87,7 @@ namespace QLSV
         }
         private void SetLoginInfo()
         {
+            //This will set the login info the login information has been saved
             if (Login_SavePasswordCheckBox.Checked)
             {
                 Properties.Settings.Default.Username = Login_Username_txtBox.Text;

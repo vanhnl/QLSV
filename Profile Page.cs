@@ -14,24 +14,20 @@ namespace QLSV
 {
     public partial class Profile_Page : Form
     {
-        string ConnectionString = "Data Source=DESKTOP-A20UEMF;Initial Catalog=QLSV;Integrated Security=True";
         public string count = "";
         public Profile_Page()
         {
             InitializeComponent();
         }
 
-        private void Profile_Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConnectionString.ConnectionStringPC))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("UPDATE QLSVUser  SET Username = @Username , Password = @Password, FullName = @FullName, PhoneNumber = @PhoneNumber, Email = @Email, Contact = @Contact  where id  = @id", con))
+             
+                //Save all the information to the database with the current query string
+                using (SqlCommand cmd = new SqlCommand("UPDATE QLSVUser SET Username = @Username , Password = @Password, FullName = @FullName, PhoneNumber = @PhoneNumber, Email = @Email, Contact = @Contact  where id  = @id", con))
                 {
                     cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                     cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
@@ -48,6 +44,8 @@ namespace QLSV
 
         private void EmailTxt_Leave(object sender, EventArgs e)
         {
+
+            //Email field limit
             Regex mRegxExpression;
             if (EmailTxt.Text.Trim() != string.Empty)
             {
@@ -63,6 +61,7 @@ namespace QLSV
 
         private void PhoneTxt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Phone number limited only number
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
         (e.KeyChar != '.'))
             {
@@ -84,6 +83,11 @@ namespace QLSV
             }
             else
                 PasswordTxt.UseSystemPasswordChar = true;
+        }
+
+        private void Profile_Page_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

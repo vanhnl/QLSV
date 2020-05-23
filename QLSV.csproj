@@ -58,9 +58,7 @@
     <Compile Include="Management Page.Designer.cs">
       <DependentUpon>Management Page.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login Page.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Login Page.cs" />
     <Compile Include="Login Page.Designer.cs">
       <DependentUpon>Login Page.cs</DependentUpon>
     </Compile>
@@ -76,6 +74,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QLSVDataSet.cs">
+      <DependentUpon>QLSVDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="QLSVDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

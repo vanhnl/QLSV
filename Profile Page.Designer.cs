@@ -183,7 +183,6 @@
             this.Controls.Add(this.Name);
             this.Controls.Add(this.Password);
             this.Controls.Add(this.UserID);
-            this.Name = "Profile_Page";
             this.Text = "Profile_Page";
             this.Load += new System.EventHandler(this.Profile_Page_Load);
             this.ResumeLayout(false);

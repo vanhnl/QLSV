@@ -21,3 +21,6 @@ D:\Winform\QLSV\obj\Debug\QLSV.csproj.GenerateResource.cache
 D:\Winform\QLSV\obj\Debug\QLSV.csproj.CoreCompileInputs.cache
 D:\Winform\QLSV\obj\Debug\QLSV.exe
 D:\Winform\QLSV\obj\Debug\QLSV.pdb
+D:\Winform\QLSV\bin\Debug\QLSV.exe.config
+D:\Winform\QLSV\bin\Debug\QLSV.exe
+D:\Winform\QLSV\bin\Debug\QLSV.pdb
